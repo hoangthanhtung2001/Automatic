@@ -35,14 +35,10 @@ def get_location_object(image_path, threshold=0.7):
             cv2.rectangle(screenshot_np, pt, (pt[0] + w, pt[1] + h), (0, 255, 0), 2)
        
         min_val, max_val, min_loc, max_loc = cv2.minMaxLoc(result)
-        # # Tính toạ độ của khung chứa template
-        # # h, w = template.shape
-        top_left = max_loc
-        # # bottom_right = (top_left[0] + w, top_left[1] + h)
-        # print(top_left)
-        # x,y = top_left
-        # mouse_movement(x,y)
-        return top_left
+        x,y = max_loc
+        center_x = x + w // 2
+        center_y = y + h // 2
+        return center_x,center_y
     else:
         return 0
     
